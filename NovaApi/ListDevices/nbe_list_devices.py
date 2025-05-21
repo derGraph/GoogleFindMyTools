@@ -67,8 +67,8 @@ def list_devices():
         register_esp32()
     elif selected_value == 'c':
         eik = bytes.fromhex(input("Enter EIK: "))
-        timestamp = input("Enter Timestamp: ")
-        print("Calculated EID:"+generate_eid(eik, timestamp=timestamp).hex())
+        timestamp = int(input("Enter Timestamp: "))
+        print("Calculated EID: "+generate_eid(eik, timestamp=timestamp).hex())
     else:
         selected_idx = int(selected_value) - 1
         selected_device_name = canonic_ids[selected_idx][0]
