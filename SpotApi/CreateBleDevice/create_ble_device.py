@@ -75,6 +75,11 @@ def register_esp32():
     ownerKeys = FMDNOwnerOperations()
     ownerKeys.generate_keys(identity_key=eik)
 
+    print("+" + "-" * 78 + "+")
+    print("|" + " " * 7 + eik.hex() + " " * 7 + "|")
+    print("|" + " " * 29 + "Ephemeral identifier" + " " * 29 + "|")
+    print("+" + "-" * 78 + "+")
+
     register_request.ringKey = ownerKeys.ringing_key
     register_request.recoveryKey = ownerKeys.recovery_key
     register_request.unwantedTrackingKey = ownerKeys.tracking_key
