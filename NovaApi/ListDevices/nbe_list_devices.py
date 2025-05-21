@@ -12,6 +12,7 @@ from ProtoDecoders import DeviceUpdate_pb2
 from ProtoDecoders.decoder import parse_device_list_protobuf, get_canonic_ids
 from SpotApi.CreateBleDevice.create_ble_device import register_esp32
 from SpotApi.UploadPrecomputedPublicKeyIds.upload_precomputed_public_key_ids import refresh_custom_trackers
+from FMDNCrypto.eid_generator import ROTATION_PERIOD, generate_eid
 
 
 def request_device_list():
@@ -64,6 +65,10 @@ def list_devices():
     if selected_value == 'r':
         print("Loading...")
         register_esp32()
+    elif selected_value == 'c':
+        eik = bytes.fromhex(input("Enter EIK: "))
+        timestamp = input("Enter Timestamp: ")
+        print("Calculated EID:"+generate_eid(eik, timestamp=timestamp).hex())
     else:
         selected_idx = int(selected_value) - 1
         selected_device_name = canonic_ids[selected_idx][0]
