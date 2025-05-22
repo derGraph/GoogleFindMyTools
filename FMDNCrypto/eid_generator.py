@@ -51,6 +51,11 @@ def calculate_r(identity_key: bytes, timestamp: int):
     # r' is now projected to the finite field Fp by calculating r = r' mod n
     return (r_dash_int % n)
 
+def print_bytes_as_int(data: bytes):
+    for i in range(len(data)):
+        print(data[i], end=" ")
+    print()
+    return
 
 def get_masked_timestamp(timestamp: int, K: int):
     # Create a bitmask that has all bits set except for the K least significant bits
